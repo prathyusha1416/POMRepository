@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="2" parallel="methods" name="Smoke(failed)">
     <classes>
-      <class name="tests.dashboardtest">
+      <class name="tests.ManagerLoginTest">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="dashboardtesting"/>
+          <include name="verifyValidLogin"/>
         </methods>
-      </class> <!-- tests.dashboardtest -->
+      </class> <!-- tests.ManagerLoginTest -->
     </classes>
   </test> <!-- Smoke(failed) -->
 </suite> <!-- Failed suite [POM Suite] -->
