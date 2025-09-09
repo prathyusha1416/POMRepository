@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.BasePage;
 
-public class loginpage extends BasePage {
+public class LoginPage extends BasePage {
     // Locators with PageFactory
     @FindBy(id = "username")
     private WebElement usernameField;
@@ -14,11 +14,11 @@ public class loginpage extends BasePage {
     @FindBy(id = "password")
     private WebElement passwordField;
 
-    @FindBy(xpath = "//button[@class='btn btn-primary btn-block']")
+    @FindBy(xpath = "//button[@type='submit']")
     private WebElement loginButton;
 
     // Constructor
-    public loginpage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
     	super(driver);
     }
 

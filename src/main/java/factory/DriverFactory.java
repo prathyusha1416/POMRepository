@@ -1,6 +1,9 @@
 package factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -26,7 +29,9 @@ public class DriverFactory {
                 WebDriverManager.chromedriver().setup();
                 driver.set(new ChromeDriver());
         }
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         getDriver().manage().window().maximize();
+        
         return getDriver();
     }
 

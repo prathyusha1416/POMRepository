@@ -1,22 +1,21 @@
 package base;
 
 import factory.DriverFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import utils.ConfigReader;
 
 public class BaseTest {
 
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-    	
+    @BeforeSuite(alwaysRun = true)
+    public void setUpSuite() {
         String browser = ConfigReader.get("browser");
-        DriverFactory.initDriver(browser); 
+        DriverFactory.initDriver(browser);
         DriverFactory.getDriver().get(ConfigReader.get("url"));
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        //DriverFactory.quitDriver(); 
+    @AfterSuite(alwaysRun = true)
+    public void tearDownSuite() {
+        DriverFactory.quitDriver();
     }
 }

@@ -26,16 +26,52 @@ public class TestListener implements ITestListener {
     private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
-    @Override
+   /* @Override
     public void onStart(ITestContext context) {
         ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.REPORTS_PATH);
         extent = new ExtentReports();
         extent.attachReporter(spark);
-    }
-
+    }*/
+    
     @Override
+    public void onStart(ITestContext context) {
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd_hh_mm_ss_a").format(new Date());
+ 
+        // 1. Timestamped report
+        String reportFile = FrameworkConstants.REPORTS_PATH + "ExtentReport_" + timestamp + ".html";
+ 
+        // 2. Latest report (always overwritten)
+        String latestReportFile = FrameworkConstants.REPORTS_PATH + "ExtentReport_latest.html";
+ 
+        ExtentSparkReporter sparkMain = new ExtentSparkReporter(reportFile);
+        ExtentSparkReporter sparkLatest = new ExtentSparkReporter(latestReportFile);
+ 
+        extent = new ExtentReports();
+        extent.attachReporter(sparkMain, sparkLatest);
+    }
+ 
+
+   /* @Override
     public void onFinish(ITestContext context) {
         if (extent != null) extent.flush();
+    }*/
+    
+    @Override
+    public void onFinish(ITestContext context) {
+        if (extent != null) {
+            extent.flush();
+ 
+            // Auto-open the latest report in browser
+            try {
+                String latestReport = FrameworkConstants.REPORTS_PATH + "ExtentReport_latest.html";
+                File htmlFile = new File(latestReport);
+                if (htmlFile.exists()) {
+                    java.awt.Desktop.getDesktop().browse(htmlFile.toURI());
+                }
+            } catch (Exception e) {
+                System.out.println("Unable to open report automatically: " + e.getMessage());
+            }
+        }
     }
 
     @Override
@@ -47,7 +83,7 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         test.get().log(Status.PASS, "Test passed");
     }
-
+/*
     @Override
     public void onTestFailure(ITestResult result) {
         test.get().log(Status.FAIL, result.getThrowable());
@@ -61,15 +97,31 @@ public class TestListener implements ITestListener {
                 test.get().log(Status.WARNING, "Failed to attach screenshot: " + e.getMessage());
             }
         }
+    }*/
+    
+    @Override
+    public void onTestFailure(ITestResult result) {
+        test.get().log(Status.FAIL, result.getThrowable());
+        WebDriver driver = DriverFactory.getDriver();
+        if (driver != null) {
+            try {
+                String filePath = takeScreenshot(driver, result.getMethod().getMethodName());
+                test.get().fail("Screenshot:",
+                        com.aventstack.extentreports.MediaEntityBuilder.createScreenCaptureFromPath(filePath).build());
+            } catch (IOException e) {
+                test.get().log(Status.WARNING, "Failed to attach screenshot: " + e.getMessage());
+            }
+        }
     }
+
 
     @Override
     public void onTestSkipped(ITestResult result) {
         test.get().log(Status.SKIP, "Test skipped");
     }
 
-    private String takeScreenshot(WebDriver driver, String methodName) throws IOException {
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+    /*private String takeScreenshot(WebDriver driver, String methodName) throws IOException {
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd_hh_mm_ss_a").format(new Date());
         String fileName = methodName + "_" + timestamp + ".png";
         Path dir = Paths.get(FrameworkConstants.SCREENSHOT_PATH);
         Files.createDirectories(dir);
@@ -77,5 +129,21 @@ public class TestListener implements ITestListener {
         Path dest = dir.resolve(fileName);
         Files.copy(src.toPath(), dest);
         return dest.toString();
+    }*/
+    
+    private String takeScreenshot(WebDriver driver, String methodName) throws IOException {
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd_hh_mm_ss_a").format(new Date());
+        String fileName = methodName + "_" + timestamp + ".png";
+
+        Path dir = Paths.get(FrameworkConstants.SCREENSHOT_PATH);
+        Files.createDirectories(dir);
+
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        Path dest = dir.resolve(fileName);
+        Files.copy(src.toPath(), dest);
+
+        // Convert Windows path to a relative or forward-slash path for report
+        return dest.toAbsolutePath().toString().replace("\\", "/");
     }
+
 }

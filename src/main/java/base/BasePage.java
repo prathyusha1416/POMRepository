@@ -1,5 +1,7 @@
 package base;
 
+import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
@@ -8,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import constants.FrameworkConstants;
 
 public class BasePage {
 	
@@ -19,7 +20,7 @@ public class BasePage {
     	
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(FrameworkConstants.EXPLICIT_WAIT));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         
     }
 
@@ -28,6 +29,10 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
+    public WebElement waitForVisibility(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    
     protected void type(WebElement element, String text) {
     	
         wait.until(ExpectedConditions.visibilityOf(element)).clear();
