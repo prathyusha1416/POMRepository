@@ -35,7 +35,7 @@ public class ManagerDashboardTest extends BaseTest {
                                 + TotalKRASCount.getPendingAcceptance()
                                 + TotalKRASCount.getCompleted()
                                 + TotalKRASCount.getObjectionRaised();
-                             /* + TotalKRACount.getmissedDeadlinesCount();   */
+                             // + TotalKRASCount.getMissedDeadlines();   
  
         System.out.println("Total KRAS: " + totalKRAS);
         System.out.println("Sum of Categories: " + sumOfCategories);
