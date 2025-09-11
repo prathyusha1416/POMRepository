@@ -11,20 +11,21 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ManagerDashboardPendingAcceptance {
+public class ManagerDashboardPendingAcknowleged {
 	private WebDriverWait wait;
 
 
 	 // Locators with PageFactory
 	 @FindBy(xpath = "//div[normalize-space()='Pending Acceptance']")
 	private WebElement PendingAcceptance;
+	 
     @FindBy(xpath="(//button[text()=' View Details '])[1]")
     private WebElement ViewDetails;
 
     @FindBy(xpath="//button[contains(text(),'✕')]")
     private WebElement Closebutton;
     
-    public ManagerDashboardPendingAcceptance(WebDriver driver) {
+    public ManagerDashboardPendingAcknowleged(WebDriver driver) {
     	this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }

@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.BasePage;
  
-public class ManagerDashboardTotalKRSCount extends BasePage {
+public class ManagerDashboardTotalKRASCount extends BasePage {
  
-    public ManagerDashboardTotalKRSCount(WebDriver driver) {
+    public ManagerDashboardTotalKRASCount(WebDriver driver) {
         super(driver);
     }
  
@@ -18,9 +18,9 @@ public class ManagerDashboardTotalKRSCount extends BasePage {
     		+ "")
     private WebElement inProgressCount;
  
-    @FindBy(xpath = "//div[@class='stat-label' and normalize-space(text())='Pending Acceptance']/preceding-sibling::div[@class='stat-number']/span\r\n"
+    @FindBy(xpath = "//div[@class='stat-label' and normalize-space(text())='Pending Acknowleged']/preceding-sibling::div[@class='stat-number']/span"
     		+ "")
-    private WebElement pendingAcceptanceCount;
+    private WebElement pendingAcknowlegedCount;
  
     @FindBy(xpath = "//div[@class='stat-label' and normalize-space(text())='Completed']/preceding-sibling::div[@class='stat-number']/span\r\n"
     		+ "")
@@ -43,8 +43,8 @@ public class ManagerDashboardTotalKRSCount extends BasePage {
         return Integer.parseInt(getText(inProgressCount));
     }
  
-    public int getPendingAcceptance() {
-        return Integer.parseInt(getText(pendingAcceptanceCount));
+    public int getPendingAcknowleged() {
+        return Integer.parseInt(getText(pendingAcknowlegedCount));
     }
  
     public int getCompleted() {

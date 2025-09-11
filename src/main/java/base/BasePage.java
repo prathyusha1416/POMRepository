@@ -14,9 +14,9 @@ import java.time.Duration;
 public class BasePage {
 	
     protected WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriverWait wait;
 
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
     	
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -29,7 +29,7 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    public WebElement waitForVisibility(By locator) {
+    protected WebElement waitForVisibility(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     

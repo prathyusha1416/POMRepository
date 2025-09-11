@@ -7,15 +7,16 @@ import org.openqa.selenium.support.FindBy;
 import base.BasePage;
 
 public class MangerDashborad extends BasePage{
- 
-	@FindBy(xpath = "//span[normalize-space()='75']")
+	
+
+	@FindBy(xpath = "//div[normalize-space()='Total KRAs']")
     private WebElement TotalKRAS;
 	
     @FindBy(xpath = "//div[text()='In Progress']")
     private WebElement InProgress;
 
-    @FindBy(xpath = "//div[normalize-space()='Pending Acceptance']")
-    private WebElement PendingAcceptance;
+    @FindBy(xpath = "//div[normalize-space()='Pending Acknowleged']")
+    private WebElement PendingAcknowleged;
 
     @FindBy(xpath = "//div[normalize-space()='Completed']")
     private WebElement Completed;
@@ -31,17 +32,19 @@ public class MangerDashborad extends BasePage{
     public MangerDashborad(WebDriver driver) {
     	super(driver);
     }
+    
+   
 
-    /*public void TotalKRAS() {
+    public void TotalKRAS() {
     	TotalKRAS.click();
     }
-*/
+
     public void InProgress() {
     	InProgress.click();
     }
 
-    public void PendingAcceptance() {
-    	PendingAcceptance.click();
+    public void PendingAcknowleged() {
+    	PendingAcknowleged.click();
     }
     public void Completed() {
     	Completed.click();

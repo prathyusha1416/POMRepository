@@ -16,6 +16,6 @@ public class BaseTest {
 
     @AfterSuite(alwaysRun = true)
     public void tearDownSuite() {
-        DriverFactory.quitDriver();
+        //DriverFactory.quitDriver();
     }
 }
