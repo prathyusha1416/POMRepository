@@ -6,13 +6,15 @@
   </listeners>
   <test thread-count="5" name="Smoke(failed)">
     <classes>
-      <class name="tests.ManagerDashboardRecordCountsTest">
+      <class name="tests.ManagerCreateNewKRATest">
         <methods>
-          <include name="verifyValidLogin"/>
-          <include name="setUpSuite"/>
-          <include name="tearDownSuite"/>
+          <include name="setUpDB"/>
+          <include name="tearDownDB"/>
+          <include name="tearDown"/>
+          <include name="verifyValidLoginAndKRA_DBValidation"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- tests.ManagerDashboardRecordCountsTest -->
+      </class> <!-- tests.ManagerCreateNewKRATest -->
     </classes>
   </test> <!-- Smoke(failed) -->
 </suite> <!-- Failed suite [POM Suite] -->

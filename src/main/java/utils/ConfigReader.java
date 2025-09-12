@@ -23,4 +23,17 @@ public class ConfigReader {
         if (value == null) throw new RuntimeException("Missing config key: " + key);
         return value;
     }
+    
+    public static String getDBUrl() {
+        return properties.getProperty("db.url");
+    }
+
+    public static String getDBUsername() {
+        return properties.getProperty("db.username");
+    }
+
+    public static String getDBPassword() {
+        return properties.getProperty("db.password");
+    }
+
 }

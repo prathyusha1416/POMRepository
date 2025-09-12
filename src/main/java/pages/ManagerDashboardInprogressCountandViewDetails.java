@@ -40,7 +40,11 @@ public class ManagerDashboardInprogressCountandViewDetails extends BasePage{
 	  
 	    @FindBy(xpath = "//button[contains(normalize-space(.),'Rejected KRAs')]")
 	    private WebElement rejectedKRAsTab;
-
+	    
+	    @FindBy(xpath = "(//button[@class=\"view-details-btn\"])[4]")
+	    private WebElement rejectedKRAsViewDetails;
+	    
+	  
 	    @FindBy(xpath = "//button[contains(normalize-space(.),'Yet to Start')]")
 	    private WebElement yetToStartTab;
 	 
@@ -114,6 +118,10 @@ public class ManagerDashboardInprogressCountandViewDetails extends BasePage{
    public void RejectedKRAS() {
 	   rejectedKRAsTab.click();
    }
+   public void rejectedKRAsViewDetails() {
+	   rejectedKRAsViewDetails.click();
+   }
+   
    
    public void YetToStart() {
 	   yetToStartTab.click();

@@ -1,25 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-11T16:28:37 IST" name="POM Suite" finished-at="2025-09-11T16:29:10 IST" duration-ms="33595">
+  <suite started-at="2025-09-12T16:38:18 IST" name="POM Suite" finished-at="2025-09-12T16:38:33 IST" duration-ms="15361">
     <groups>
     </groups>
-    <test started-at="2025-09-11T16:28:37 IST" name="Smoke" finished-at="2025-09-11T16:29:10 IST" duration-ms="33595">
-      <class name="tests.ManagerDashboardRecordCountsTest">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:tests.ManagerDashboardRecordCountsTest@40005471]" started-at="2025-09-11T16:28:34 IST" name="setUpSuite" finished-at="2025-09-11T16:28:37 IST" duration-ms="2979" status="PASS">
+    <test started-at="2025-09-12T16:38:18 IST" name="Smoke" finished-at="2025-09-12T16:38:33 IST" duration-ms="15361">
+      <class name="tests.ManagerCreateNewKRATest">
+        <test-method is-config="true" signature="setUpDB()[pri:0, instance:tests.ManagerCreateNewKRATest@24313fcc]" started-at="2025-09-12T16:38:17 IST" name="setUpDB" finished-at="2025-09-12T16:38:18 IST" duration-ms="825" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUpSuite -->
-        <test-method signature="verifyValidLogin()[pri:0, instance:tests.ManagerDashboardRecordCountsTest@40005471]" started-at="2025-09-11T16:28:37 IST" name="verifyValidLogin" finished-at="2025-09-11T16:29:10 IST" duration-ms="32853" status="PASS">
+        </test-method> <!-- setUpDB -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.ManagerCreateNewKRATest@24313fcc]" started-at="2025-09-12T16:38:18 IST" name="setUp" finished-at="2025-09-12T16:38:22 IST" duration-ms="4288" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyValidLogin -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:tests.ManagerDashboardRecordCountsTest@40005471]" started-at="2025-09-11T16:29:11 IST" name="tearDownSuite" finished-at="2025-09-11T16:29:11 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyValidLoginAndKRA_DBValidation()[pri:0, instance:tests.ManagerCreateNewKRATest@24313fcc]" started-at="2025-09-12T16:38:22 IST" name="verifyValidLoginAndKRA_DBValidation" finished-at="2025-09-12T16:38:33 IST" duration-ms="10507" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[❌ Test failed: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@class='toggle-btn active']"}
+  (Session info: chrome=140.0.7339.127)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [4fdb2c2699b3fe417905edb0f4483b47, findElement {value=//button[@class='toggle-btn active'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.127, chrome: {chromedriverVersion: 140.0.7339.82 (bc93617e21c3..., userDataDir: C:\Users\202162\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61532}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61532/devtoo..., se:cdpVersion: 140.0.7339.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4fdb2c2699b3fe417905edb0f4483b47]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: ❌ Test failed: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@class='toggle-btn active']"}
+  (Session info: chrome=140.0.7339.127)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [4fdb2c2699b3fe417905edb0f4483b47, findElement {value=//button[@class='toggle-btn active'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.127, chrome: {chromedriverVersion: 140.0.7339.82 (bc93617e21c3..., userDataDir: C:\Users\202162\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61532}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61532/devtoo..., se:cdpVersion: 140.0.7339.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4fdb2c2699b3fe417905edb0f4483b47
+at org.testng.Assert.fail(Assert.java:111)
+at tests.ManagerCreateNewKRATest.verifyValidLoginAndKRA_DBValidation(ManagerCreateNewKRATest.java:123)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDownSuite -->
-      </class> <!-- tests.ManagerDashboardRecordCountsTest -->
+        </test-method> <!-- verifyValidLoginAndKRA_DBValidation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ManagerCreateNewKRATest@24313fcc]" started-at="2025-09-12T16:38:33 IST" name="tearDown" finished-at="2025-09-12T16:38:33 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="tearDownDB()[pri:0, instance:tests.ManagerCreateNewKRATest@24313fcc]" started-at="2025-09-12T16:38:35 IST" name="tearDownDB" finished-at="2025-09-12T16:38:35 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownDB -->
+      </class> <!-- tests.ManagerCreateNewKRATest -->
     </test> <!-- Smoke -->
   </suite> <!-- POM Suite -->
 </testng-results>

@@ -63,6 +63,8 @@ public class ManagerDashboardRecordCountsTest extends BaseTest {
         Thread.sleep(1000);
         Inprogress.RejectedKRAS();
         Thread.sleep(1000);
+        Inprogress.rejectedKRAsViewDetails();
+        Thread.sleep(1000);
         Inprogress.YetToStart();
         Thread.sleep(1000);
         
